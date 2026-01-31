@@ -1,0 +1,59 @@
+/* [project]/fonts/satoshi_eaf6cf30.module.css [app-client] (css) */
+@font-face {
+  font-family: satoshi;
+  src: url("../media/Satoshi_Light-s.p.99a9212d.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: satoshi;
+  src: url("../media/Satoshi_Regular-s.p.c0432bd8.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: satoshi;
+  src: url("../media/Satoshi_Medium-s.p.d1c3c065.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: satoshi;
+  src: url("../media/Satoshi_Bold-s.p.0405f017.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: satoshi;
+  src: url("../media/Satoshi_Black-s.p.33fff4ec.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: satoshi Fallback;
+  src: local(Arial);
+  ascent-override: 102.23%;
+  descent-override: 24.29%;
+  line-gap-override: 10.12%;
+  size-adjust: 98.8%;
+}
+
+.satoshi_eaf6cf30-module__fC4I7q__className {
+  font-family: satoshi, satoshi Fallback;
+}
+
+.satoshi_eaf6cf30-module__fC4I7q__variable {
+  --font-satoshi: "satoshi", "satoshi Fallback";
+}
+
+/*# sourceMappingURL=fonts_satoshi_eaf6cf30_module_css_f9ee138c._.single.css.map*/

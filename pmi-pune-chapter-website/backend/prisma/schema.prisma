@@ -1,0 +1,213 @@
+generator client {
+  provider = "prisma-client-js"
+  output = "../node_modules/.prisma/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String         @id @default(cuid())
+  email         String         @unique
+  name          String?
+  passwordHash  String
+  role          Role           @default(MEMBER)
+  emailVerified Boolean        @default(false)
+  profile       Profile?
+  pdus          PDU[]
+  registrations Registration[]
+  notifications Notification[]
+  refreshTokens RefreshToken[]
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+
+  @@index([email])
+  @@index([role])
+  @@index([createdAt])
+}
+
+model Profile {
+  id          String   @id @default(cuid())
+  userId      String   @unique
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  phone       String?
+  company     String?
+  designation String?
+  experience  Int?     @default(0)
+  bio         String?
+  avatarUrl   String?
+  certifications String[]
+  expertise   String[]
+  github      String?
+  linkedin    String?
+  twitter     String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Event {
+  id          String         @id @default(cuid())
+  title       String
+  slug        String         @unique
+  description String
+  startDate   DateTime
+  endDate     DateTime
+  location    String?
+  isOnline    Boolean        @default(false)
+  meetingLink String?
+  maxAttendees Int?
+  price       Float          @default(0)
+  memberPrice Float          @default(0)
+  earlyBirdPrice Float       @default(0)
+  earlyBirdEnd Date?
+  category    String
+  tags        String[]
+  featured    Boolean        @default(false)
+  status      EventStatus    @default(UPCOMING)
+  coverImage  String?
+  registrations Registration[]
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+
+  @@index([slug])
+  @@index([startDate])
+  @@index([category])
+  @@index([featured])
+  @@index([status])
+  @@index([createdAt])
+}
+
+model Registration {
+  id            String         @id @default(cuid())
+  userId        String
+  user          User           @relation(fields: [userId], references: [id])
+  eventId       String
+  event         Event          @relation(fields: [eventId], references: [id])
+  ticketType    TicketType     @default(STANDARD)
+  amount        Float
+  paymentStatus PaymentStatus  @default(PENDING)
+  razorpayOrderId String?
+  razorpayPaymentId String?
+  attended      Boolean        @default(false)
+  feedbackSubmitted Boolean    @default(false)
+  feedbackRating Int?
+  feedbackComment String?
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+
+  @@unique([userId, eventId])
+  @@index([userId])
+  @@index([eventId])
+  @@index([paymentStatus])
+  @@index([createdAt])
+}
+
+model PDU {
+  id          String   @id @default(cuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  category    PDUCategory
+  hours       Float
+  title       String
+  description String
+  evidenceUrl String?
+  status      PDUStatus @default(PENDING)
+  reviewedBy  String?
+  reviewComment String?
+  submittedAt DateTime @default(now())
+  reviewedAt  DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([userId])
+  @@index([category])
+  @@index([status])
+  @@index([submittedAt])
+  @@index([createdAt])
+}
+
+model Notification {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  type      NotificationType
+  title     String
+  message   String
+  read      Boolean  @default(false)
+  metadata  Json?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+  @@index([type])
+  @@index([read])
+  @@index([createdAt])
+}
+
+model RefreshToken {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  token     String   @unique
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+  @@index([token])
+  @@index([expiresAt])
+}
+
+// Enums
+enum Role {
+  SUPER_ADMIN
+  ADMIN
+  EDITOR
+  MEMBER
+  VOLUNTEER
+}
+
+enum EventStatus {
+  DRAFT
+  UPCOMING
+  ONGOING
+  COMPLETED
+  CANCELLED
+}
+
+enum TicketType {
+  STANDARD
+  EARLY_BIRD
+  MEMBER
+  STUDENT
+  SPONSOR
+}
+
+enum PaymentStatus {
+  PENDING
+  COMPLETED
+  FAILED
+  REFUNDED
+  CANCELLED
+}
+
+enum PDUCategory {
+  EDUCATION
+  GIVING_BACK
+  WORKING
+}
+
+enum PDUStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum NotificationType {
+  EVENT
+  PDU
+  PAYMENT
+  SYSTEM
+  ANNOUNCEMENT
+}

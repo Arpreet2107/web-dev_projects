@@ -1,0 +1,24 @@
+{
+  "name": "pmi-pune-chapter",
+  "version": "1.0.0",
+  "description": "PMI Pune-Deccan India Chapter Website",
+  "private": true,
+  "scripts": {
+    "install:all": "cd frontend && npm install && cd ../backend && npm install && cd ../cms && npm install",
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:cms": "cd cms && npm run develop",
+    "build:frontend": "cd frontend && npm run build",
+    "build:backend": "cd backend && npm run build",
+    "build:cms": "cd cms && npm run build"
+  },
+  "keywords": [
+    "pmi",
+    "project-management",
+    "pune",
+    "chapter"
+  ],
+  "author": "PMI Pune-Deccan India Chapter",
+  "license": "MIT"
+}
+

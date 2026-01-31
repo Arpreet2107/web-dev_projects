@@ -1,0 +1,6 @@
+{
+  "databaseURL": "https://Arpreet-Mahala-s-workspace-sm4oj2.eu-central-1.xata.sh/db/arp-SnapCast",
+  "codegen": {
+    "output": "src/xata.ts"
+  }
+}

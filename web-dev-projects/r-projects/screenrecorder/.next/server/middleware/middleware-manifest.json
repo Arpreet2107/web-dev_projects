@@ -1,0 +1,56 @@
+{
+  "sorted_middleware": [],
+  "middleware": {
+    "/": {
+      "files": [
+        "server/edge/chunks/_01cf1bb5._.js",
+        "server/edge/chunks/node_modules_drizzle-orm_149a555d._.js",
+        "server/edge/chunks/node_modules_@xata_io_client_dist_index_mjs_b5d70974._.js",
+        "server/edge/chunks/node_modules_better-call_dist_index_5fc3d526.js",
+        "server/edge/chunks/node_modules_zod_lib_index_mjs_4cfd4204._.js",
+        "server/edge/chunks/node_modules_better-auth_dist_788ad481._.js",
+        "server/edge/chunks/node_modules_jose_dist_browser_2c3a1a5e._.js",
+        "server/edge/chunks/node_modules_kysely_dist_esm_46302d5c._.js",
+        "server/edge/chunks/node_modules_@bufbuild_protobuf_dist_esm_e8606cf1._.js",
+        "server/edge/chunks/node_modules_@arcjet_protocol_0c492877._.js",
+        "server/edge/chunks/node_modules_@connectrpc_connect_dist_esm_2e5be2d1._.js",
+        "server/edge/chunks/node_modules_tailwind-merge_dist_bundle-mjs_mjs_442ebee9._.js",
+        "server/edge/chunks/node_modules_8f3bc039._.js",
+        "server/edge/chunks/[root-of-the-server]__fa5b56cb._.js",
+        "server/edge/chunks/edge-wrapper_e8589aa3.js"
+      ],
+      "name": "middleware",
+      "page": "/",
+      "matchers": [
+        {
+          "regexp": "/:nextData(_next/data/[^/]{1,})?/((?!api|_next/static|_next/image|favicon.ico|sign-in|assets).*){(\\\\.json)}?",
+          "originalSource": "/((?!api|_next/static|_next/image|favicon.ico|sign-in|assets).*)"
+        }
+      ],
+      "wasm": [
+        {
+          "name": "wasm_dd92d_modules__arcjet_analyze_wasm_wasm_arcjet_analyze_js_req_component_core_325b988e",
+          "filePath": "server/edge/chunks/dd92d_modules_@arcjet_analyze-wasm_wasm_arcjet_analyze_js_req_component_core_325b988e.wasm"
+        },
+        {
+          "name": "wasm_8069e__arcjet_analyze_wasm_wasm_arcjet_analyze_js_req_component_core2_325b988e",
+          "filePath": "server/edge/chunks/8069e_@arcjet_analyze-wasm_wasm_arcjet_analyze_js_req_component_core2_325b988e.wasm"
+        },
+        {
+          "name": "wasm_8069e__arcjet_analyze_wasm_wasm_arcjet_analyze_js_req_component_core3_325b988e",
+          "filePath": "server/edge/chunks/8069e_@arcjet_analyze-wasm_wasm_arcjet_analyze_js_req_component_core3_325b988e.wasm"
+        }
+      ],
+      "assets": [],
+      "env": {
+        "__NEXT_BUILD_ID": "development",
+        "NEXT_SERVER_ACTIONS_ENCRYPTION_KEY": "RfAZJ2umefIlkQ5AzlghuvwH1sIHhsv1Bf+GMIh3B4c=",
+        "__NEXT_PREVIEW_MODE_ID": "445058c40d1b90f1d8632558cf38da91",
+        "__NEXT_PREVIEW_MODE_ENCRYPTION_KEY": "37a7111fadb5e769189ed805c021f10b948c23cb165b7beee721cfb7b40a7f96",
+        "__NEXT_PREVIEW_MODE_SIGNING_KEY": "5f9505bb38ba4fed880952503a65459611927a5f1d66c84db9dc994fcc119d0a"
+      }
+    }
+  },
+  "instrumentation": null,
+  "functions": {}
+}

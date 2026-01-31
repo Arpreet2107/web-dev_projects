@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 255 255 255;
+    --foreground: 15 23 42;
+    --primary: 236 72 153;
+    --secondary: 168 85 247;
+    --accent: 251 207 232;
+    --muted: 249 250 251;
+  }
+
+  .dark {
+    --background: 30 27 75;
+    --foreground: 251 245 255;
+    --primary: 236 72 153;
+    --secondary: 168 85 247;
+    --accent: 124 58 237;
+    --muted: 51 46 129;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .glass {
+    @apply bg-white/10 backdrop-blur-md border border-white/20;
+  }
+
+  .glass-dark {
+    @apply bg-black/20 backdrop-blur-md border border-white/10;
+  }
+
+  .glow-pink {
+    box-shadow: 0 0 20px rgba(236, 72, 153, 0.5),
+      0 0 40px rgba(236, 72, 153, 0.3), 0 0 60px rgba(236, 72, 153, 0.1);
+  }
+
+  .glow-purple {
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.5),
+      0 0 40px rgba(168, 85, 247, 0.3), 0 0 60px rgba(168, 85, 247, 0.1);
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-pink-500 via-purple-500 to-pink-500 bg-clip-text text-transparent;
+    background-size: 200% auto;
+    animation: gradient-shift 3s ease infinite;
+  }
+
+  @keyframes gradient-shift {
+    0%,
+    100% {
+      background-position: 0% center;
+    }
+    50% {
+      background-position: 100% center;
+    }
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Hide scrollbar but allow scrolling */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Loading spinner */
+.heart-loader {
+  width: 40px;
+  height: 40px;
+  position: relative;
+}
+
+.heart-loader::before,
+.heart-loader::after {
+  content: "";
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #ec4899;
+  position: absolute;
+  left: 0;
+  top: 0;
+  animation: pulse-heart 1.2s ease-in-out infinite;
+}
+
+.heart-loader::after {
+  animation-delay: -0.6s;
+}
+
+@keyframes pulse-heart {
+  0%,
+  100% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
+

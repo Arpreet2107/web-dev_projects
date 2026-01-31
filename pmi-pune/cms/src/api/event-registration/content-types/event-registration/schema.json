@@ -1,0 +1,59 @@
+{
+  "kind": "collectionType",
+  "collectionName": "event_registrations",
+  "info": {
+    "singularName": "event-registration",
+    "pluralName": "event-registrations",
+    "displayName": "Event Registration",
+    "description": "Event registrations managed in Strapi"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "uniqueId": {
+      "type": "uid",
+      "required": true
+    },
+    "event": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::event.event",
+      "inversedBy": "registrations"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "fullName": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "phone": {
+      "type": "string"
+    },
+    "razorpayOrderId": {
+      "type": "string"
+    },
+    "razorpayPaymentId": {
+      "type": "string"
+    },
+    "paymentStatus": {
+      "type": "enumeration",
+      "enum": ["pending", "paid", "failed"],
+      "default": "pending"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["confirmed", "cancelled"],
+      "default": "confirmed"
+    }
+  }
+}
+

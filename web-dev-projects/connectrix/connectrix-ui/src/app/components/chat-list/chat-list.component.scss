@@ -1,0 +1,125 @@
+.chat-list {
+  > div {
+    cursor: pointer;
+    transition: background 0.3s, box-shadow 0.3s;
+
+    &:hover {
+      background-color: rgba(0, 255, 255, 0.1);
+      box-shadow: 0 0 12px rgba(0, 255, 255, 0.2);
+    }
+  }
+}
+
+.badge {
+  font-weight: 600;
+  padding: 0.4em 0.8em;
+  background: rgba(0, 255, 255, 0.12);
+  border-radius: 12px;
+  color: #00ffff;
+  box-shadow: 0 0 6px rgba(0, 255, 255, 0.4);
+  text-shadow: 0 0 4px #00ffffaa;
+}
+
+.msg-date {
+  font-size: 0.75rem;
+  color: #ccf9ff;
+
+  &.unread {
+    color: #00ffff;
+    font-weight: 700;
+    text-shadow: 0 0 6px #00ffffaa;
+  }
+}
+
+.unread-msg-badge {
+  background: #00ffff;
+  color: #001f3f;
+  min-width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  font-size: 0.75rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 8px #00ffff;
+}
+
+.user-img img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #00ffff;
+  box-shadow: 0 0 8px #00ffffaa;
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 12px #00ffffcc;
+  }
+}
+
+.chat-header-glass {
+  background: rgba(10, 20, 35, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+  box-shadow: 0 2px 14px rgba(0, 255, 255, 0.15);
+  z-index: 10;
+}
+
+.logo-container img {
+  filter: none !important; // Remove blur/drop-shadow to make it crystal clear
+  width: 100%;
+  max-width: 200px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.input-group-text {
+  background-color: rgba(0, 255, 255, 0.07) !important;
+  border: none;
+  color: #00ffff;
+  font-weight: 600;
+}
+
+.form-control-sm {
+  background: rgba(0, 255, 255, 0.07);
+  border: none;
+  color: #e6ffff;
+  font-weight: 500;
+
+  &::placeholder {
+    color: #ccf9ff;
+    opacity: 0.8;
+  }
+
+  &:focus {
+    background: rgba(0, 30, 40, 0.5);
+    outline: none;
+    box-shadow: 0 0 10px #00ffff;
+  }
+}
+
+.text-bg-light {
+  background-color: rgba(0, 255, 255, 0.07) !important;
+  color: #00ffff !important;
+  box-shadow: 0 0 5px rgba(0, 255, 255, 0.35);
+  font-weight: 600;
+
+  &:hover {
+    background-color: rgba(0, 255, 255, 0.15) !important;
+    color: #ccf9ff !important;
+  }
+}
+
+// General text color override
+.chat-list span,
+.chat-list small,
+.chat-list .text-secondary,
+.chat-list .form-control-sm {
+  color: #e6ffff !important;
+}

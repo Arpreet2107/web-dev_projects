@@ -1,0 +1,85 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          String  @id @default(uuid())  // Using UUID for scalability
+  email       String  @unique
+  username    String  @unique
+  displayName String?
+  bio         String?
+  location    String?
+  job         String?
+  website     String?
+  img         String?
+  cover       String?
+
+  // Relations
+  posts       Post[]
+  likes       Like[]
+  savedPosts  SavedPost[] // This references the SavedPost model correctly
+  followers   Follow[] @relation("UserFollowers") // Users who follow this user
+  following   Follow[] @relation("UserFollowing") // Users this user follows
+}
+
+model Post {
+  id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  desc        String?  @db.VarChar(255)
+  img         String?
+  video       String?
+  isSensitive Boolean  @default(false)
+
+  // Relations
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  rePostId    Int?
+  rePost      Post?    @relation("Reposts", fields: [rePostId], references: [id])
+
+  parentPostId Int?
+  parentPost   Post?    @relation("PostComments", fields: [parentPostId], references: [id])
+  comments     Post[]   @relation("PostComments")
+
+  likes       Like[]
+  savedPosts  SavedPost[] // Correct relation to SavedPost
+  repostedPosts Post[] @relation("Reposts")
+}
+
+model SavedPost {
+  id        Int    @id @default(autoincrement())
+  userId    String
+  postId    Int
+  user      User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  post      Post   @relation(fields: [postId], references: [id], onDelete: Cascade)
+}
+
+model Like {
+  id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+
+  postId      Int
+  post        Post     @relation(fields: [postId], references: [id])
+}
+
+model Follow {
+  id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+
+  userId      String  // The user who is following someone
+  followingId String  // The user being followed
+
+  user        User     @relation("UserFollowers", fields: [userId], references: [id])
+  following   User     @relation("UserFollowing", fields: [followingId], references: [id])
+
+  @@unique([userId, followingId]) // Prevents duplicate follows
+}

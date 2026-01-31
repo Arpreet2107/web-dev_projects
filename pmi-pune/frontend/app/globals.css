@@ -1,0 +1,266 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+@layer base {
+  :root {
+    /* Base colors */
+    --background: 255 255 255;
+    --foreground: 15 23 42;
+    
+    /* Primary (Deep Navy) */
+    --primary: 15 23 74;
+    --primary-foreground: 255 255 255;
+    --primary-hover: 10 15 50;
+    --primary-active: 5 10 35;
+    
+    /* Secondary (Warm Gold) */
+    --secondary: 245 158 11;
+    --secondary-foreground: 15 23 42;
+    --secondary-hover: 217 119 6;
+    --secondary-active: 180 83 9;
+    
+    /* Accent (Electric Blue) */
+    --accent: 59 130 246;
+    --accent-foreground: 255 255 255;
+    --accent-hover: 37 99 235;
+    --accent-active: 29 78 216;
+    
+    /* Destructive */
+    --destructive: 239 68 68;
+    --destructive-foreground: 255 255 255;
+    
+    /* Muted */
+    --muted: 241 245 249;
+    --muted-foreground: 100 116 139;
+    
+    /* Card */
+    --card: 255 255 255;
+    --card-foreground: 15 23 42;
+    
+    /* Popover */
+    --popover: 255 255 255;
+    --popover-foreground: 15 23 42;
+    
+    /* Border & Input */
+    --border: 226 232 240;
+    --input: 226 232 240;
+    --ring: 15 23 42;
+    
+    /* Radius */
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 2 6 23;
+    --foreground: 241 245 249;
+    
+    /* Primary (Lighter Navy) */
+    --primary: 30 41 90;
+    --primary-foreground: 255 255 255;
+    --primary-hover: 20 30 70;
+    --primary-active: 10 20 50;
+    
+    /* Secondary (Brighter Gold) */
+    --secondary: 252 211 77;
+    --secondary-foreground: 15 23 42;
+    --secondary-hover: 245 158 11;
+    --secondary-active: 217 119 6;
+    
+    /* Accent (Brighter Blue) */
+    --accent: 96 165 250;
+    --accent-foreground: 15 23 42;
+    --accent-hover: 59 130 246;
+    --accent-active: 37 99 235;
+    
+    /* Destructive */
+    --destructive: 220 38 38;
+    --destructive-foreground: 255 255 255;
+    
+    /* Muted */
+    --muted: 30 41 59;
+    --muted-foreground: 148 163 184;
+    
+    /* Card */
+    --card: 15 23 42;
+    --card-foreground: 241 245 249;
+    
+    /* Popover */
+    --popover: 15 23 42;
+    --popover-foreground: 241 245 249;
+    
+    /* Border & Input */
+    --border: 30 41 59;
+    --input: 30 41 59;
+    --ring: 96 165 250;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: 'rlig' 1, 'calt' 1, 'ss01' 1, 'ss02' 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-bold tracking-tight text-balance;
+  }
+  
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl;
+  }
+  
+  h2 {
+    @apply text-3xl md:text-4xl lg:text-5xl;
+  }
+  
+  h3 {
+    @apply text-2xl md:text-3xl lg:text-4xl;
+  }
+  
+  h4 {
+    @apply text-xl md:text-2xl;
+  }
+  
+  p {
+    @apply text-base leading-relaxed text-pretty;
+  }
+  
+  a {
+    @apply text-accent hover:text-accent-hover transition-colors duration-200;
+  }
+  
+  button, [type='button'], [type='reset'], [type='submit'] {
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent focus-visible:ring-offset-background;
+  }
+  
+  input, textarea, select {
+    @apply bg-background border border-input rounded-md px-4 py-2 text-sm focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background focus:outline-none transition-all duration-200;
+  }
+}
+
+@layer components {
+  .container {
+    @apply px-4 sm:px-6 lg:px-8 mx-auto w-full max-w-7xl;
+  }
+  
+  .section {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+  
+  .btn {
+    @apply inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background;
+  }
+  
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary-hover active:bg-primary-active;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary-hover active:bg-secondary-active;
+  }
+  
+  .btn-accent {
+    @apply bg-accent text-accent-foreground hover:bg-accent-hover active:bg-accent-active;
+  }
+  
+  .btn-outline {
+    @apply border border-input hover:bg-accent hover:text-accent-foreground;
+  }
+  
+  .btn-ghost {
+    @apply hover:bg-accent/10 hover:text-accent;
+  }
+  
+  .btn-link {
+    @apply underline-offset-4 hover:underline text-accent;
+  }
+  
+  .card {
+    @apply bg-card text-card-foreground rounded-xl border shadow-sm overflow-hidden transition-all duration-200 hover:shadow-md;
+  }
+  
+  .glass {
+    @apply bg-white/10 backdrop-blur-md border border-white/20 dark:bg-slate-900/10 dark:border-slate-700/20;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .text-pretty {
+    text-wrap: pretty;
+  }
+  
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .animate-marquee {
+    animation: marquee 30s linear infinite;
+  }
+  
+  .animate-marquee:hover {
+    animation-play-state: paused;
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-float-delay-1 {
+    animation: float 6s ease-in-out 1s infinite;
+  }
+  
+  .animate-float-delay-2 {
+    animation: float 6s ease-in-out 2s infinite;
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
